@@ -1,0 +1,29 @@
+@media print{
+/*No Head*/
+header{
+	margin-top: 100px;
+	margin-bottom: 100px;
+	margin-right: 150px;
+	margin-left: 200px;
+	 background-color: 	#800000;
+}
+
+/*Courier New Font*/
+body, table {
+	font-family: Courier New;
+}
+
+h2	{
+color: grey;
+}
+
+/*Picture Stuff*/
+img	{
+	display: block;
+  	margin-left: auto;
+  	margin-right: auto;
+  	width: 50%;
+	page-break-before: always;
+		}
+
+}
