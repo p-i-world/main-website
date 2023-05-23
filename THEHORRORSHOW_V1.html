@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!This here is a total remix of the classic and elegant generated nature poem Tokoro Gorge by Nick Montfort. He wrote the code here. I hacked the words to make it more about urbanity, modernity, and my idea of Tokyo, a city I have never been to. Remixed March 18, 2009 by Scott Rettberg.>
+<html>
+<head>
+<style type="text/css">
+/* <![CDATA[ */
+body {
+
+ background: #000000;
+background-repeat: no-repeat;
+
+ color:#FFFFFF;
+ margin: 0 24pt 0 24pt;
+ font-family: Luminari, sans-serif;
+font-weight:bold;
+ font-size: 16px;
+}
+div {
+ margin: 0 24pt 0 24pt;
+ height: 28px;
+text-align: center;
+}
+#main {
+ margin: 12px 24pt 0 24pt;
+ height: 92px;
+  width:75%; 
+text-align: center;
+}
+a {
+ color: #a045a8;
+ text-decoration: none;
+}
+/* ]]> */
+</style>
+<script language="JavaScript" type="text/javascript">
+var t=0
+var n=0
+var paths=0
+var above='HELL,SHRINK,HORROR,DEATH,HOUSE,KILL,KILLING,MURDER,DEATH,HATE,CRIMSON,ABORT,FETUS,HATE'.split(',')
+
+var below='DUMMY,DOLL,STAB,SHOOT,KILL,MAIM,HALLOWEEN,DREAD,GHAST,FRIGHT'.split(',')
+
+var trans='HIDE,SEEK,KICK,GRUESOME,FIGHT,WRETCHED,WOLF,BEAST,BUST,APATHETIC,STERILE,SHOW'.split(',')
+
+var imper='CRAWL TOWARD,SPIT,CRAWL,PERSON,SANS,GHOST,WITCH,WATCH'
+imper=imper.split(',')
+
+var intrans='DESTROY,REVOLT,MAIM,EVIL,RESIDENT,CURSED,GLASS,SHATTERED,DUST,MOTHER'.split(',')
+
+var s='S,'.split(',')
+var texture='PATHETIC,DESIRE,IVORY,RED,DEAD,KILL,TOMB,DREAD,MET,END,FINAL'.split(',')
+
+function rand_range(max) {
+ return Math.floor(Math.random()*(max+1))
+}
+function choose(array) {
+ return array[rand_range(array.length-1)]
+}
+function path() {
+ var p=rand_range(1)
+ var words=choose(above)
+ if ((words=='BABY DEAD')&&(rand_range(2)==1)) {
+  words='MOTHER MAY I '+choose(trans)
+ } else {
+  words+=s[p]+' '+choose(trans)+s[(p+1)%2]
+ }
+ words+=' THE '+choose(below)+choose(s)+'.'
+ return words
+}
+function site() {
+ var words=''
+ if (rand_range(2)==1) {
+  words+=choose(above)
+ } else {
+  words+=choose(below)
+ }
+ words+='S '+choose(intrans)+'!'
+ return words
+}
+function cave() {
+ var adjs=('FLAMMABLE,TOXIC,CHOKING,CANCER,HAUNTED,STALK,VILE,BOOM,CURSE'+choose(texture)+','+choose(below)+',DISPOSABLE,HAZARDOUS').split(',')
+ var target=1+rand_range(2)
+ while (adjs.length>target) {
+  adjs.splice(rand_range(adjs.length),1)
+  }
+ var words='\u00a0\u00a0'+choose(imper)+' THE '+adjs.join(' ')+'!'
+ return words
+}
+function do_line() {
+ var main=document.getElementById('main')
+ if (t<=20) {
+  t+=1
+ } else {
+  main.removeChild(document.getElementById('main').firstChild)  
+ }
+ if (n==0) {
+  text=' '
+ } else if (n==1) {
+  paths=2+rand_range(2)
+  text=path()
+ } else if (n<paths) {
+  text=site()
+ } else if (n==paths) {
+  text=path()
+ } else if (n==paths+1) {
+  text=' '
+ } else if (n==paths+2) {
+  text=cave()
+ } else {
+  text=' '
+  n=0
+ }
+ n+=1
+ text=text.substring(0,1).toUpperCase()+text.substring(1,text.length)
+ last=document.createElement('div')
+ last.appendChild(document.createTextNode(text))
+ main.appendChild(last)
+}
+function poem() {
+ setInterval('do_line()', 1500)
+}
+</script>
+  <title>THE HORROR SHOW</title>
+</head>
+
+<body onload="poem()"<p style="background-image: url('Castle D.png');">
+
+
+
+<div style="float:right;  color:#FFFFFF;  font-size: 50px;">THE HORROR SHOW<br/></div>
+<br><br><br><div style="float:right;  color:#FFFFFF;  font-size: 42px;">By: Phil Iosue</div>
+<br><br><br><div style="float:right;  color:#FFFFFF;  font-size: 25px;">COM 369-102</div>
+<audio controls>
+  <source src="Fakery Way (Twinkle Park) - Sonic Adventure [OST].mp3" type="audio/mpeg">
+</audio>
+<div id="main"></div>
+</body>
+</html>
+
+
